@@ -1,0 +1,42 @@
+[
+    {
+        "sku": 500,
+        "nombre": "Tarjeta Gr\u00e1fica RTX 4060",
+        "categoria": "Hardware",
+        "cantidad": 15,
+        "fecha_ingreso": "2026-02-12T19:28:56.301580",
+        "ubicacion_pasillo": "A1"
+    },
+    {
+        "sku": 250,
+        "nombre": "Procesador Intel i7",
+        "categoria": "Hardware",
+        "cantidad": 25,
+        "fecha_ingreso": "2026-02-12T19:28:56.301588",
+        "ubicacion_pasillo": "B2"
+    },
+    {
+        "sku": 100,
+        "nombre": "Mouse Gamer",
+        "categoria": "Perif\u00e9ricos",
+        "cantidad": 50,
+        "fecha_ingreso": "2026-02-12T19:28:56.301591",
+        "ubicacion_pasillo": "D5"
+    },
+    {
+        "sku": 300,
+        "nombre": "TECLADO MECANICO BLUE SWITCHES",
+        "categoria": "Perif\u00e9ricos",
+        "cantidad": 40,
+        "fecha_ingreso": "2026-02-12T19:28:56.301643",
+        "ubicacion_pasillo": "E3"
+    },
+    {
+        "sku": 750,
+        "nombre": "Monitor 27' 144hz",
+        "categoria": "Perif\u00e9ricos",
+        "cantidad": 15,
+        "fecha_ingreso": "2026-02-12T19:28:56.301589",
+        "ubicacion_pasillo": "C1"
+    }
+]

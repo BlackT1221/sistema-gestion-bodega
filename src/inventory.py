@@ -1,6 +1,8 @@
-from typing import Optional, Generator
+from typing import Optional, Generator, List
 from src.models import LoteProducto
 from src.node import NodoInventario
+import json
+import os
 
 class ArbolInventario:
     def __init__(self):
@@ -51,3 +53,49 @@ class ArbolInventario:
             yield from self._inorder_recursivo(actual.left)
             yield actual.data
             yield from self._inorder_recursivo(actual.right)
+
+    # -- Persistencia de datos
+
+    # Guardar el arbol en el disco usando json pre-order
+    
+    def guardar_en_json(self, ruta_archivo: str):
+        print(f"Guardando archivo en {ruta_archivo}...")
+
+        # Obtener la lista de los diccionarios
+
+        lista_datos = [p.to_dict() for p in self.recorrer_preorder()]
+
+        # Asegurarnos que ese directorio existe
+        os.makedirs(os.path.dirname(ruta_archivo), exist_ok=True)
+
+        with open(ruta_archivo, 'w', encoding='utf-8') as f:
+            json.dump(lista_datos, f, indent=4)
+        print("Guardado exitoso")
+    
+    def cargar_desde_json(self, ruta_archivo: str):
+        #Leer el json y poblar arbol
+        if not os.path.exists(ruta_archivo):
+            print(f"⚠ La ruta para el archivo({ruta_archivo}) no existe.")
+            return
+        
+        print(f"Cargando el inventario desde {ruta_archivo}...")
+        with open(ruta_archivo, 'r', encoding='utf-8') as f:
+            lista_datos = json.load(f)
+
+        self.root = None # Limpiar el arbol
+        self._size = 0
+
+        for item in lista_datos:
+            producto = LoteProducto.from_dict(item)
+            self.insertar(producto)
+        
+        print(f"Carga completada. {self._size} productos recuperados")
+
+    def recorrer_preorder(self) -> Generator[LoteProducto, None, None]:
+        yield from self._preorder_recursivo(self.root)
+
+    def _preorder_recursivo(self, actual: Optional[NodoInventario]) -> Generator[LoteProducto, None, None]:
+        if actual:
+            yield actual.data #raiz
+            yield from self._preorder_recursivo(actual.left)
+            yield from self._preorder_recursivo(actual.right)
