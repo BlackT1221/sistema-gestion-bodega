@@ -1,0 +1,21 @@
+# Entorno Virtual
+venv/
+env/
+.env
+
+# Python (Archivos temporales de compilación)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest (Caché de pruebas)
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Persistencia de datos (Para que no se suba tu "base de datos" de prueba)
+src/db_inventario.json
+
+# Sistema Operativo
+.DS_Store
+.directory

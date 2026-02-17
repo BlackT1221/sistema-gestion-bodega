@@ -99,3 +99,62 @@ class ArbolInventario:
             yield actual.data #raiz
             yield from self._preorder_recursivo(actual.left)
             yield from self._preorder_recursivo(actual.right)
+    
+    def eliminar(self, sku: int) -> bool:
+        self.root, eliminado = self._eliminar_recursivo(self.root, sku)
+        if eliminado:
+            self._size -= 1
+        return eliminado
+
+    def _eliminar_recursivo(self, actual: Optional[NodoInventario], sku: int):
+        if not actual:
+            return actual, False
+        
+        if sku < actual.data.sku:
+            actual.left, eliminado = self._eliminar_recursivo(actual.left, sku)
+        elif sku > actual.data.sku:
+            # CORRECCIÓN 1: Debe ser actual.right
+            actual.right, eliminado = self._eliminar_recursivo(actual.right, sku)
+        else:
+            # Caso 1 y 2: Sin hijos o con un solo hijo
+            if not actual.left:
+                return actual.right, True
+            if not actual.right:
+                return actual.left, True
+            
+            # Caso 3 Dos Hijos
+            temp = self._min_value_node(actual.right)
+            # CORRECCIÓN 2: Asignar el dato al nodo actual
+            actual.data = temp.data 
+            actual.right, _ = self._eliminar_recursivo(actual.right, temp.data.sku)
+            return actual, True
+        
+        return actual, eliminado
+    
+    def _min_value_node(self, nodo: NodoInventario) -> NodoInventario:
+        current = nodo
+
+        while current.left is not None:
+            current = current.left
+        
+        return current
+    
+    def imprimir_arbol(self):
+        if not self.root:
+            print("el inventario esta vacio")
+        else:
+            self._imprimir_recursivo(self.root, 0, "Raíz: ")
+    
+    def _imprimir_recursivo(self, actual: Optional[NodoInventario], nivel: int, prefijo: str):
+        if actual is not None:
+            print(" " * (nivel * 4) + f"{prefijo}[{actual.data.sku}] {actual.data.nombre}")
+            if actual.left or actual.right:
+                if actual.left:
+                    self._imprimir_recursivo(actual.left, nivel + 1, "Izq-- ")
+                else:
+                    print(" " * ((nivel + 1) * 4) + "Izq-- Vacío")
+                
+                if actual.right:
+                    self._imprimir_recursivo(actual.right, nivel + 1, "Der-- ")
+                else:
+                    print(" " * ((nivel + 1) * 4) + "Der-- Vacío")

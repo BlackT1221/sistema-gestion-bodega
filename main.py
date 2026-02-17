@@ -34,6 +34,8 @@ def run():
     bodega.insertar(nuevo)
 
     bodega.guardar_en_json(RUTA_JSON)
+
+    bodega.imprimir_arbol()
     print("Fin ejecucion")
     
 if __name__ == "__main__":
