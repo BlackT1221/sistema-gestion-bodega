@@ -1,42 +1,108 @@
+import requests
+import random
 from datetime import datetime
 from src.models import LoteProducto
 from src.inventory import ArbolInventario
 
-# Definir la ruta del json
-RUTA_JSON = "data/dataset.json"
+def obtener_datos_api():
+    url = "https://fakestoreapi.com/products"
 
-def run():
-    bodega = ArbolInventario()
+    try:
+        respuesta = requests.get(url)
+        respuesta.raise_for_status()
+        return respuesta.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error al conectar a la API: {e}")
+        return []
 
-    # Primer paso: Intentar cargar
-    bodega.cargar_desde_json(RUTA_JSON)
+def poblar_bodega_desde_api(arbol: ArbolInventario, datos_json: list):
+    # Mapear el json y lo va a insertar en el BST
+    print(f"Procesando {len(datos_json)} productos")
 
-    #Si fuera la primera vez
+    for item in datos_json:
+        #Mapearlos desde la api a el dataclass
+        producto = LoteProducto(
+            sku=item["id"],
+            nombre=item["title"][:40],
+            categoria=item["category"],
+            cantidad=random.randint(10, 100),
+            fecha_ingreso=datetime.now(),
+            ubicacion_pasillo=f"Seccion {item['category'][:3].upper()}"
+        )
+        arbol.insertar(producto)
 
-    if bodega._size == 0:
-        print("---Primera Ejecucion---")
-        datos = [
-            LoteProducto(500, "Tarjeta Gráfica RTX 4060", "Hardware", 10, datetime.now(), "A1"),
-            LoteProducto(250, "Procesador Intel i7", "Hardware", 25, datetime.now(), "B2"),
-            LoteProducto(750, "Monitor 27' 144hz", "Periféricos", 15, datetime.now(), "C1"),
-            LoteProducto(100, "Mouse Gamer", "Periféricos", 50, datetime.now(), "D5"),
-            LoteProducto(500, "Tarjeta Gráfica RTX 4060", "Hardware", 5, datetime.now(), "A1"), # Duplicado para probar lógica
-        ]
+def mostrar_menu():
+    print("\n" + "="*45)
+    print(" 🏢 SISTEMA DE GESTIÓN DE BODEGA V2.0 🏢 ")
+    print("="*45)
+    print("1. 🌐 Cargar productos desde API (FakeStore)")
+    print("2. 📋 Ver Inventario Completo (In-Order)")
+    print("3. 🔍 Buscar producto por SKU")
+    print("4. 🗑️  Eliminar producto por SKU")
+    print("5. 💾 Guardar inventario en disco (JSON)")
+    print("6. 📂 Cargar inventario desde disco (JSON)")
+    print("7. 🌳 Mostrar estructura del árbol (Visual)")
+    print("8. ❌ Salir")
+    print("="*45)
 
-        for d in datos:
-            bodega.insertar(d)
+def main():
+    mi_bodega = ArbolInventario()
+    ruta_archivo = "data/dataset.json"
 
-        bodega.guardar_en_json
-    
-    print(f"Inventario actual: {bodega._size} productos encontrados.")
-    print("Simulando llegada de mercancia nueva...")
-    nuevo = LoteProducto(300, "TECLADO MECANICO BLUE SWITCHES", "Periféricos", 20, datetime.now(), "E3")
-    bodega.insertar(nuevo)
+    while True:
+        mostrar_menu()
+        opcion = input("Seleccionar una opcion (1-8)")
 
-    bodega.guardar_en_json(RUTA_JSON)
+        if opcion == "1":
+            poblar_bodega_desde_api(mi_bodega, obtener_datos_api())
+        elif opcion == "2":
+            if mi_bodega == 0:
+                print("La bodega esta vacia")
+            else: 
+                print(f"\n{'SKU':<5} | {'CATEGORÍA':<15} | {'STOCK':<6} | {'NOMBRE DEL PRODUCTO'}")
+                print("-" * 75)
+                for prod in mi_bodega.recorrer_inorder():
+                    print(f"{prod.sku:<5} | {prod.categoria:<15} | {prod.cantidad:<6} | {prod.nombre}")
+        elif opcion == "3":
+            try:
+                sku_buscar = int(input("Ingresa el SKU a buscar"))
+                resultado = mi_bodega.buscar(sku_buscar)
+                
+                if resultado:
+                    print(f"\nProducto encontrado")
+                    print(f"    - Nombre: {resultado.nombre}")
+                    print(f"    - Categoria: {resultado.categoria}")
+                    print(f"    - Stock: {resultado.cantidad}")
+                    print(f"    - Ubicacion: {resultado.ubicacion_pasillo}")
+                else: 
+                    print("El SKU no existe")
+            except ValueError:
+                print("Ingresa un numero valido")
+        elif opcion == "4":
+            try:
+                sku_eliminar = int(input("Ingresa el SKU a eliminar"))
+                if mi_bodega.eliminar(sku_eliminar):
+                    print(f"Producto con SKU {sku_eliminar} fue eliminado correctamente")
+                else: 
+                    print(f"Producto con SKU {sku_eliminar} no encontrado")
+            except ValueError:
+                print("Ingresa un numero valido")
+        elif opcion == "5":
+            mi_bodega.guardar_en_json(ruta_archivo)
+        elif opcion == "6":
+            mi_bodega.cargar_desde_json(ruta_archivo)
+        elif opcion == "7":
+            if hasattr(mi_bodega, 'imprimir_arbol'):
+                print("\nEstructura del arbol binario:")
+                mi_bodega.imprimir_arbol()
+            else:
+                print("El metodo no existe")
+        elif opcion == "8":
+            print("\n Gracias por usar el sistema")
+            break
+        
+        else:
+            print("La opcion no existe")
 
-    bodega.imprimir_arbol()
-    print("Fin ejecucion")
-    
 if __name__ == "__main__":
-    run()
+    main()

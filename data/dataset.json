@@ -1,42 +1,154 @@
 [
     {
-        "sku": 500,
-        "nombre": "Tarjeta Gr\u00e1fica RTX 4060",
-        "categoria": "Hardware",
-        "cantidad": 15,
-        "fecha_ingreso": "2026-02-12T19:28:56.301580",
-        "ubicacion_pasillo": "A1"
+        "sku": 1,
+        "nombre": "Fjallraven - Foldsack No. 1 Backpack, Fi",
+        "categoria": "men's clothing",
+        "cantidad": 17,
+        "fecha_ingreso": "2026-02-23T18:38:10.101214",
+        "ubicacion_pasillo": "Seccion MEN"
     },
     {
-        "sku": 250,
-        "nombre": "Procesador Intel i7",
-        "categoria": "Hardware",
-        "cantidad": 25,
-        "fecha_ingreso": "2026-02-12T19:28:56.301588",
-        "ubicacion_pasillo": "B2"
+        "sku": 2,
+        "nombre": "Mens Casual Premium Slim Fit T-Shirts ",
+        "categoria": "men's clothing",
+        "cantidad": 51,
+        "fecha_ingreso": "2026-02-23T18:38:10.101233",
+        "ubicacion_pasillo": "Seccion MEN"
     },
     {
-        "sku": 100,
-        "nombre": "Mouse Gamer",
-        "categoria": "Perif\u00e9ricos",
-        "cantidad": 50,
-        "fecha_ingreso": "2026-02-12T19:28:56.301591",
-        "ubicacion_pasillo": "D5"
+        "sku": 3,
+        "nombre": "Mens Cotton Jacket",
+        "categoria": "men's clothing",
+        "cantidad": 43,
+        "fecha_ingreso": "2026-02-23T18:38:10.101241",
+        "ubicacion_pasillo": "Seccion MEN"
     },
     {
-        "sku": 300,
-        "nombre": "TECLADO MECANICO BLUE SWITCHES",
-        "categoria": "Perif\u00e9ricos",
-        "cantidad": 100,
-        "fecha_ingreso": "2026-02-12T19:28:56.301643",
-        "ubicacion_pasillo": "E3"
+        "sku": 4,
+        "nombre": "Mens Casual Slim Fit",
+        "categoria": "men's clothing",
+        "cantidad": 54,
+        "fecha_ingreso": "2026-02-23T18:38:10.101246",
+        "ubicacion_pasillo": "Seccion MEN"
     },
     {
-        "sku": 750,
-        "nombre": "Monitor 27' 144hz",
-        "categoria": "Perif\u00e9ricos",
-        "cantidad": 15,
-        "fecha_ingreso": "2026-02-12T19:28:56.301589",
-        "ubicacion_pasillo": "C1"
+        "sku": 5,
+        "nombre": "John Hardy Women's Legends Naga Gold & S",
+        "categoria": "jewelery",
+        "cantidad": 89,
+        "fecha_ingreso": "2026-02-23T18:38:10.101250",
+        "ubicacion_pasillo": "Seccion JEW"
+    },
+    {
+        "sku": 6,
+        "nombre": "Solid Gold Petite Micropave ",
+        "categoria": "jewelery",
+        "cantidad": 64,
+        "fecha_ingreso": "2026-02-23T18:38:10.101254",
+        "ubicacion_pasillo": "Seccion JEW"
+    },
+    {
+        "sku": 7,
+        "nombre": "White Gold Plated Princess",
+        "categoria": "jewelery",
+        "cantidad": 62,
+        "fecha_ingreso": "2026-02-23T18:38:10.101257",
+        "ubicacion_pasillo": "Seccion JEW"
+    },
+    {
+        "sku": 8,
+        "nombre": "Pierced Owl Rose Gold Plated Stainless S",
+        "categoria": "jewelery",
+        "cantidad": 10,
+        "fecha_ingreso": "2026-02-23T18:38:10.101261",
+        "ubicacion_pasillo": "Seccion JEW"
+    },
+    {
+        "sku": 9,
+        "nombre": "WD 2TB Elements Portable External Hard D",
+        "categoria": "electronics",
+        "cantidad": 29,
+        "fecha_ingreso": "2026-02-23T18:38:10.101264",
+        "ubicacion_pasillo": "Seccion ELE"
+    },
+    {
+        "sku": 11,
+        "nombre": "Silicon Power 256GB SSD 3D NAND A55 SLC ",
+        "categoria": "electronics",
+        "cantidad": 24,
+        "fecha_ingreso": "2026-02-23T18:38:10.101271",
+        "ubicacion_pasillo": "Seccion ELE"
+    },
+    {
+        "sku": 12,
+        "nombre": "WD 4TB Gaming Drive Works with Playstati",
+        "categoria": "electronics",
+        "cantidad": 59,
+        "fecha_ingreso": "2026-02-23T18:38:10.101275",
+        "ubicacion_pasillo": "Seccion ELE"
+    },
+    {
+        "sku": 13,
+        "nombre": "Acer SB220Q bi 21.5 inches Full HD (1920",
+        "categoria": "electronics",
+        "cantidad": 75,
+        "fecha_ingreso": "2026-02-23T18:38:10.101279",
+        "ubicacion_pasillo": "Seccion ELE"
+    },
+    {
+        "sku": 14,
+        "nombre": "Samsung 49-Inch CHG90 144Hz Curved Gamin",
+        "categoria": "electronics",
+        "cantidad": 41,
+        "fecha_ingreso": "2026-02-23T18:38:10.101283",
+        "ubicacion_pasillo": "Seccion ELE"
+    },
+    {
+        "sku": 15,
+        "nombre": "BIYLACLESEN Women's 3-in-1 Snowboard Jac",
+        "categoria": "women's clothing",
+        "cantidad": 80,
+        "fecha_ingreso": "2026-02-23T18:38:10.101288",
+        "ubicacion_pasillo": "Seccion WOM"
+    },
+    {
+        "sku": 16,
+        "nombre": "Lock and Love Women's Removable Hooded F",
+        "categoria": "women's clothing",
+        "cantidad": 62,
+        "fecha_ingreso": "2026-02-23T18:38:10.101292",
+        "ubicacion_pasillo": "Seccion WOM"
+    },
+    {
+        "sku": 17,
+        "nombre": "Rain Jacket Women Windbreaker Striped Cl",
+        "categoria": "women's clothing",
+        "cantidad": 48,
+        "fecha_ingreso": "2026-02-23T18:38:10.101295",
+        "ubicacion_pasillo": "Seccion WOM"
+    },
+    {
+        "sku": 18,
+        "nombre": "MBJ Women's Solid Short Sleeve Boat Neck",
+        "categoria": "women's clothing",
+        "cantidad": 89,
+        "fecha_ingreso": "2026-02-23T18:38:10.101300",
+        "ubicacion_pasillo": "Seccion WOM"
+    },
+    {
+        "sku": 19,
+        "nombre": "Opna Women's Short Sleeve Moisture",
+        "categoria": "women's clothing",
+        "cantidad": 91,
+        "fecha_ingreso": "2026-02-23T18:38:10.101304",
+        "ubicacion_pasillo": "Seccion WOM"
+    },
+    {
+        "sku": 20,
+        "nombre": "DANVOUY Womens T Shirt Casual Cotton Sho",
+        "categoria": "women's clothing",
+        "cantidad": 72,
+        "fecha_ingreso": "2026-02-23T18:38:10.101308",
+        "ubicacion_pasillo": "Seccion WOM"
     }
 ]

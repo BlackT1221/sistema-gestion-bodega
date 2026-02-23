@@ -125,7 +125,7 @@ class ArbolInventario:
             # Caso 3 Dos Hijos
             temp = self._min_value_node(actual.right)
             # CORRECCIÓN 2: Asignar el dato al nodo actual
-            actual.data = temp.data 
+            actual.data = temp.data
             actual.right, _ = self._eliminar_recursivo(actual.right, temp.data.sku)
             return actual, True
         
